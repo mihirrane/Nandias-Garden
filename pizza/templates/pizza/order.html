@@ -1,9 +1,23 @@
 <h1> Order a pizza </h1>
 <h2> {{ note }} </h2>
 
+{% if pizzaform %}
 <form action = "{% url 'order' %}" method = "POST">
     {% csrf_token %}
     {{ pizzaform }}
 
     <input  type = "submit" value = "Order Pizza">
+</form>
+{% endif %}
+
+<br><br>
+
+Want more pizzas?
+<br>
+
+<form action = "{% url 'pizzas' %}" method = "GET">
+    {% csrf_token %}
+    {{ multiple_pizza_form }}
+
+    <input  type = "submit" value = "Get Pizzas">
 </form>
